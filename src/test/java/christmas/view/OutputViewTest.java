@@ -8,6 +8,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 class OutputViewTest {
+
     private OutputView outputView;
 
     @BeforeEach
