@@ -7,13 +7,11 @@ import org.junit.jupiter.api.Test;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class CalculatorTest {
 
     @DisplayName("Map 형태의 주문을 받아 MenuList를 순회하며 정가 합산")
     @Test
-    void calculateListPriceTest() {
+    void addPriceTest() {
         // Given
         Map<String, Integer> testOrder = new HashMap<>();
         testOrder.put("티본스테이크", 1);
@@ -23,7 +21,7 @@ class CalculatorTest {
 
         // When
         Calculator calculator = new Calculator();
-        Integer result = calculator.calculateListPrice(testOrder);
+        Integer result = calculator.addPrice(testOrder);
 
         // Then
         Assertions.assertEquals(142000, result);
