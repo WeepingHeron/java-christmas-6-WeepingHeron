@@ -1,16 +1,12 @@
 package christmas.view;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.Map;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class InputViewTest {
 
