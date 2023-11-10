@@ -2,6 +2,7 @@ package christmas.domain;
 
 import christmas.domain.calculate.Calculator;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class PromotionModel {
@@ -10,6 +11,8 @@ public class PromotionModel {
     private Integer date;
     private Map<String, Integer> order;
     private Integer addedPrice;
+    private Map<String, Integer> appliedEvents = new HashMap<>();
+    private Integer discountedAmount = 0;
 
     public Integer getDate() {
         return date;
@@ -33,5 +36,21 @@ public class PromotionModel {
 
     public void setOrder(Map<String, Integer> order) {
         this.order = order;
+    }
+
+    public Map<String, Integer> getAppliedEvents() {
+        return appliedEvents;
+    }
+
+    public void setAppliedEvents(String key, Integer value) {
+        appliedEvents.put(key, value);
+    }
+
+    public Integer getDiscountedAmount() {
+        return discountedAmount;
+    }
+
+    public void setDiscountedAmount(Integer discountedAmount) {
+        this.discountedAmount = discountedAmount;
     }
 }
