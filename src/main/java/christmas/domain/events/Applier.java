@@ -9,13 +9,12 @@ import java.util.Map;
 
 public class Applier {
 
-    PromotionModel model = new PromotionModel();
     Gift gift = new Gift();
     ChristmasDiscount christmasDiscount = new ChristmasDiscount();
     DayOfTheWeekDiscount dayOfTheWeekDiscount = new DayOfTheWeekDiscount();
     HolidayDiscount holidayDiscount = new HolidayDiscount();
 
-    public void applyDiscounts(Integer addedPrice, Integer date, Map<String, Integer> order) {
+    public void applyDiscounts(PromotionModel model, Integer addedPrice, Integer date, Map<String, Integer> order) {
         Integer discountedAmount = 0;
         discountedAmount
                 += christmasDiscount.applyChristmasDiscount(date)
@@ -26,7 +25,7 @@ public class Applier {
         model.setDiscountedAmount(discountedAmount);
     }
 
-    public void applyEvents(Integer addedPrice, Integer date, Map<String, Integer> order) {
+    public void applyEvents(PromotionModel model, Integer addedPrice, Integer date, Map<String, Integer> order) {
         if (christmasDiscount.applyChristmasDiscount(date) > 0) {
             model.setAppliedEvents("크리스마스 디데이 할인", christmasDiscount.applyChristmasDiscount(date));
         }
@@ -34,14 +33,14 @@ public class Applier {
             model.setAppliedEvents("증정 이벤트", 25000);
         }
         if (dayOfTheWeekDiscount.applyDayOfTheWeekDiscount(order, date) > 0) {
-            applyDayOfTheWeekEvent(date, order);
+            applyDayOfTheWeekEvent(model, date, order);
         }
         if (holidayDiscount.applyHolidayDiscount(date) > 0) {
             model.setAppliedEvents("특별 할인", 1000);
         }
     }
 
-    private void applyDayOfTheWeekEvent(Integer date, Map<String, Integer> order) {
+    private void applyDayOfTheWeekEvent(PromotionModel model, Integer date, Map<String, Integer> order) {
         if (Calendar.values()[date].isWeekend()) {
             model.setAppliedEvents("주말 할인", dayOfTheWeekDiscount.applyDayOfTheWeekDiscount(order, date));
         } else if (!Calendar.values()[date].isWeekend()) {

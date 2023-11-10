@@ -22,13 +22,8 @@ public class PromotionController {
     public void updateView() {
         runInputView();
         model.setAddedPrice(model.getOrder());
-        applier.applyDiscounts(model.getAddedPrice(), model.getDate(), model.getOrder());
-        applier.applyEvents(model.getAddedPrice(), model.getDate(), model.getOrder());
-        System.out.println(model.getAddedPrice());
-        System.out.println(model.getAppliedEvents());
-        System.out.println(model.getDiscountedAmount());
-        System.out.println(model.getOrder());
-        System.out.println(model.getDate());
+        applier.applyDiscounts(model, model.getAddedPrice(), model.getDate(), model.getOrder());
+        applier.applyEvents(model, model.getAddedPrice(), model.getDate(), model.getOrder());
         runOutputView();
     }
 
