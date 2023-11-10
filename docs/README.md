@@ -33,6 +33,29 @@
   * setAddedPrice: 총주문 금액 설정
   * getOrder: 주문 반환
   * setOrder: 주문 설정
+  * getAppliedEvents: 적용된 혜택 반환
+  * setAppliedEvents: 적용된 혜택 설정
+  * getDiscountedAmount: 총혜택 금액 반환
+  * setDiscountedAmount: 총혜택 금액 설정
+* Calendar: 12월 달력의 날짜에 담긴 주말, 공휴일의 정보 및 관련 메서드를 enum 형태로 관리
+  * isWeekend: 주말 여부를 boolean 형태로 반환
+  * isHoliday: 공휴일 여부를 boolean 형태로 반환
+* Applier: 할인 정책의 로직을 모아 model의 데이터를 업데이트
+  * applyDiscounts: 총혜택 금액을 모델에 전달
+  * applyEvents: 적용된 이벤트를 모델에 전달
+  * applyDayOfTheWeekEvent: applyEvents에서 분리된 로직, 요일에 따라 다른 이벤트를 모델에 전달
+* Gift: 할인 전 총주문 금액이 12만원 이상일 때, 샴페인 1개 증정
+  * applyGiftEvent: 증정으로 인해 혜택을 본 가격을 반환
+  * checkGiftEvent: 이벤트의 조건을 통과하는지 확인
+* ChristmasDiscount: 크리스마스가 다가올수록 할인
+  * applyChristmasDiscount: 날짜에 따라 할인된 금액 반환
+  * checkChristmasDiscount: 이벤트의 조건을 통과하는지 확인
+  * calculateChristmasDiscount: 날짜를 받아 할인율 계산
+* DayOfTheWeekDiscount: 요일에 따라 메뉴 할인
+  * applyDayOfTheWeekDiscount: 요일에 따라 다른 메뉴를 할인 받고 할인 금액을 반환
+  * calculateDayOfTheWeekDiscount: 인자로 들어온 메뉴의 그룹을 MenuList와 대조하여 할인 금액을 계산
+* HolidayDiscount: 공휴일에는 총주문 금액에서 1000원 할인
+  * applyHolidayDiscount: 날짜와 달력을 비교하여 할인 금액을 반환
 
 ## util: 뷰와 모델 양쪽에서 사용
 * PriceFormatterUtil
@@ -47,6 +70,11 @@
   * printDate: 방문 날짜 출력 UI
   * printMenu: 주문 출력 UI
   * printAddedPrice: 총주문 금액 출력 UI
+  * printGift: 증정 메뉴 출력 UI
+  * printAppliedEvents: 혜택 내역 출력 UI
+  * printDiscountedAmount: 총혜택 금액 출력 UI
+  * printFinalPrice: 할인 후 예상 결제 금액 출력 UI
+  * printBadge: 총혜택 금액에 따른 이벤트 배지 출력 UI
 
 ## controller: 뷰와 모델 간의 중개
 * PromotionController: 입력을 받아 모델을 업데이트하고, 모델의 변경을 감지하여 뷰를 업데이트
