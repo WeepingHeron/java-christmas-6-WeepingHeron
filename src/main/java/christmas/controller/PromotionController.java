@@ -1,7 +1,6 @@
 package christmas.controller;
 
 import christmas.domain.PromotionModel;
-import christmas.domain.calculate.Calculator;
 import christmas.view.InputView;
 import christmas.view.OutputView;
 
@@ -9,24 +8,27 @@ public class PromotionController {
     private PromotionModel model;
     private InputView inputView;
     private OutputView outputView;
-    private Calculator calculator;
 
-    public PromotionController(PromotionModel model, InputView inputView, OutputView outputView, Calculator calculator) {
+    public PromotionController(PromotionModel model, InputView inputView, OutputView outputView) {
         this.model = model;
         this.inputView = inputView;
         this.outputView = outputView;
-        this.calculator = calculator;
     }
 
     public void updateView() {
+        readDateAndOrder();
+        model.setAddedPrice(model.getOrder());
+        printData();
+    }
+
+    private void readDateAndOrder() {
         model.setDate(inputView.readDate());
         model.setOrder(inputView.readOrder());
+    }
 
-        Integer addedPrice = calculator.addPrice(model.getOrder());
-        model.setAddedPrice(addedPrice);
-
+    private void printData() {
         outputView.printDate(model.getDate());
         outputView.printMenu(model.getOrder());
-        outputView.printListPrice(model.getAddedPrice());
+        outputView.printAddedPrice(model.getAddedPrice());
     }
 }
