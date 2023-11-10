@@ -16,17 +16,17 @@ public class PromotionController {
     }
 
     public void updateView() {
-        readDateAndOrder();
+        runInputView();
         model.setAddedPrice(model.getOrder());
-        printData();
+        runOutputView();
     }
 
-    private void readDateAndOrder() {
+    private void runInputView() {
         model.setDate(inputView.readDate());
         model.setOrder(inputView.readOrder());
     }
 
-    private void printData() {
+    private void runOutputView() {
         outputView.printDate(model.getDate());
         outputView.printMenu(model.getOrder());
         outputView.printAddedPrice(model.getAddedPrice());
