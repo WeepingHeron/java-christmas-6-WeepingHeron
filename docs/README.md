@@ -26,6 +26,7 @@
 * MenuList: 메뉴의 정보 및 관련 메서드를 enum 형태로 관리
   * getMenuName: MenuName을 반환
   * getPriceByName: 인자로 들어온 이름을 enum을 순회 및 대조하여 해당 메뉴의 가격 반환
+  * isGroupByName: 인자로 들어온 이름과 그룹의 일치 여부를 반환한다
 * PromotionModel: 내부 로직을 처리하는 역할, 입/출력할 데이터를 관리
   * getDate: 방문 날짜 반환
   * setDate: 방문 날짜 설정
