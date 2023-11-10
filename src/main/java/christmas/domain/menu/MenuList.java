@@ -29,6 +29,10 @@ public enum MenuList {
         return this.MenuName;
     }
 
+    public String getGroup() {
+        return Group;
+    }
+
     public static Integer getPriceByName(String name) {
         for (MenuList menuList : MenuList.values()) {
             if (name.equals(menuList.getMenuName())) {
@@ -36,5 +40,14 @@ public enum MenuList {
             }
         }
         return null;
+    }
+
+    public static boolean getGroupByName(String name, String group) {
+        for (MenuList menuList : MenuList.values()) {
+            if (name.equals(menuList.getMenuName()) && group.equals(menuList.getGroup())) {
+                return true;
+            }
+        }
+        return false;
     }
 }
