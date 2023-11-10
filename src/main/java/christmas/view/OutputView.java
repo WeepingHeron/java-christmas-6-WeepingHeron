@@ -28,5 +28,58 @@ public class OutputView {
     public void printAddedPrice(Integer addedPrice) {
         System.out.println("<할인 전 총주문 금액>");
         System.out.println(format.getFormattedPrice(addedPrice));
+        System.out.println();
+    }
+
+    public void printGift(Map<String, Integer> appliedEvents) {
+        System.out.println("<증정 메뉴>");
+
+        if (appliedEvents.containsKey("gift")) {
+            System.out.println("샴페인 1개");
+        } else if (appliedEvents.isEmpty()) {
+            System.out.println("없음");
+        }
+        System.out.println();
+    }
+
+    public void printAppliedEvents(Map<String, Integer> appliedEvents) {
+        System.out.println("<혜택 내역>");
+
+        for (Map.Entry<String, Integer> entry : appliedEvents.entrySet()) {
+            String appliedEvent = entry.getKey();
+            Integer discountedAmount = entry.getValue();
+
+            System.out.println(appliedEvent + ": -");
+            System.out.print(format.getFormattedPrice(discountedAmount));
+        }
+        if (appliedEvents.isEmpty()) {
+            System.out.println("없음");
+        }
+        System.out.println();
+    }
+
+    public void printDiscountedAmount(Integer discountedAmount) {
+        System.out.println("<총혜택 금액>");
+        System.out.println("-" + format.getFormattedPrice(discountedAmount));
+        System.out.println();
+    }
+
+    public void printFinalPrice(Integer addedPrice, Integer discountedAmount) {
+        System.out.println("<할인 후 예상 결제 금액>");
+        System.out.println(format.getFormattedPrice(addedPrice - discountedAmount));
+        System.out.println();
+    }
+
+    public void printBadge(Integer discountedAmount) {
+        System.out.println("<12월 이벤트 배지>");
+        if (discountedAmount >= 20000) {
+            System.out.println("산타");
+        } else if (discountedAmount >= 10000) {
+            System.out.println("트리");
+        } else if (discountedAmount >= 5000) {
+            System.out.println("별");
+        } else if (discountedAmount >= 0) {
+            System.out.println("없음");
+        }
     }
 }
