@@ -34,9 +34,9 @@ public class OutputView {
     public void printGift(Map<String, Integer> appliedEvents) {
         System.out.println("<증정 메뉴>");
 
-        if (appliedEvents.containsKey("gift")) {
+        if (appliedEvents.containsKey("증정 이벤트")) {
             System.out.println("샴페인 1개");
-        } else if (appliedEvents.isEmpty()) {
+        } else if (!appliedEvents.containsKey("증정 이벤트")) {
             System.out.println("없음");
         }
         System.out.println();
@@ -49,8 +49,8 @@ public class OutputView {
             String appliedEvent = entry.getKey();
             Integer discountedAmount = entry.getValue();
 
-            System.out.println(appliedEvent + ": -");
-            System.out.print(format.getFormattedPrice(discountedAmount));
+            System.out.print(appliedEvent + ": -");
+            System.out.println(format.getFormattedPrice(discountedAmount));
         }
         if (appliedEvents.isEmpty()) {
             System.out.println("없음");
@@ -66,7 +66,11 @@ public class OutputView {
 
     public void printFinalPrice(Integer addedPrice, Integer discountedAmount) {
         System.out.println("<할인 후 예상 결제 금액>");
-        System.out.println(format.getFormattedPrice(addedPrice - discountedAmount));
+        if (addedPrice >= 120000) {
+            System.out.println(format.getFormattedPrice(addedPrice - discountedAmount + 25000));
+        } else if (addedPrice < 120000) {
+            System.out.println(format.getFormattedPrice(addedPrice - discountedAmount));
+        }
         System.out.println();
     }
 
