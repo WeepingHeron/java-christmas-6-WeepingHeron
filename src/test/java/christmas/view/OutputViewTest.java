@@ -31,6 +31,6 @@ class OutputViewTest {
     @Test
     void printListPriceTest() {
         Integer price = 142000;
-        outputView.printListPrice(price);
+        outputView.printAddedPrice(price);
     }
 }

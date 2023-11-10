@@ -25,7 +25,7 @@ public class OutputView {
         System.out.println();
     }
 
-    public void printListPrice(Integer addedPrice) {
+    public void printAddedPrice(Integer addedPrice) {
         System.out.println("<할인 전 총주문 금액>");
         System.out.println(format.getFormattedPrice(addedPrice));
     }
