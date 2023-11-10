@@ -1,8 +1,12 @@
 package christmas.domain;
 
+import christmas.domain.calculate.Calculator;
+
 import java.util.Map;
 
 public class PromotionModel {
+    Calculator calculator = new Calculator();
+
     private Integer date;
     private Map<String, Integer> order;
     private Integer addedPrice;
@@ -19,8 +23,8 @@ public class PromotionModel {
         return addedPrice;
     }
 
-    public void setAddedPrice(Integer addedPrice) {
-        this.addedPrice = addedPrice;
+    public void setAddedPrice(Map<String, Integer> order) {
+        addedPrice = calculator.addPrice(order);
     }
 
     public Map<String, Integer> getOrder() {
