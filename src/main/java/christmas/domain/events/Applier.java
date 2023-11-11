@@ -41,9 +41,9 @@ public class Applier {
     }
 
     private void applyDayOfTheWeekEvent(PromotionModel model, Integer date, Map<String, Integer> order) {
-        if (Calendar.values()[date].isWeekend()) {
+        if (Calendar.values()[date - 1].isWeekend()) {
             model.setAppliedEvents("주말 할인", dayOfTheWeekDiscount.applyDayOfTheWeekDiscount(order, date));
-        } else if (!Calendar.values()[date].isWeekend()) {
+        } else if (!Calendar.values()[date - 1].isWeekend()) {
             model.setAppliedEvents("평일 할인", dayOfTheWeekDiscount.applyDayOfTheWeekDiscount(order, date));
         }
     }
