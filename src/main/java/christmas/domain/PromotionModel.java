@@ -9,8 +9,8 @@ public class PromotionModel {
     Calculator calculator = new Calculator();
 
     private Integer date;
-    private Map<String, Integer> order;
-    private Integer addedPrice;
+    private Map<String, Integer> order = new HashMap<>();
+    private Integer addedPrice = 0;
     private Map<String, Integer> appliedEvents = new HashMap<>();
     private Integer discountedAmount = 0;
 
