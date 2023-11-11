@@ -17,12 +17,12 @@ public enum MenuList {
 
     private final String Group;
     private final String MenuName;
-    private final int price;
+    private final int Price;
 
     MenuList(String group, String menuName, int price) {
         Group = group;
         MenuName = menuName;
-        this.price = price;
+        this.Price = price;
     }
 
     public String getMenuName() {
@@ -36,7 +36,16 @@ public enum MenuList {
     public static Integer getPriceByName(String name) {
         for (MenuList menuList : MenuList.values()) {
             if (name.equals(menuList.getMenuName())) {
-                return menuList.price;
+                return menuList.Price;
+            }
+        }
+        return null;
+    }
+
+    public static String getGroupByName(String name) {
+        for (MenuList menuList : MenuList.values()) {
+            if (name.equals(menuList.getMenuName())) {
+                return menuList.Group;
             }
         }
         return null;
