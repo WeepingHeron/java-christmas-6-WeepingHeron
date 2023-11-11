@@ -35,6 +35,7 @@ public class PromotionController {
 
     private void runReadDate() {
         boolean isValid = false;
+
         while (!isValid) {
             try {
                 model.setDate(inputView.readDate());
@@ -49,6 +50,7 @@ public class PromotionController {
 
     private void runReadOrder() {
         boolean isValid = false;
+
         while (!isValid) {
             try {
                 model.setOrder(inputView.readOrder());

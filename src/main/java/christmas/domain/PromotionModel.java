@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class PromotionModel {
+
     Calculator calculator = new Calculator();
 
     private Integer date;

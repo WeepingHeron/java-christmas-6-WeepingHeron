@@ -60,9 +60,9 @@ public enum MenuList {
         return false;
     }
 
-    public static boolean isValidName(String menu) {
+    public static boolean isValidName(String name) {
         for (MenuList menuList : MenuList.values()) {
-            if (menu.equals(menuList.getMenuName())) {
+            if (name.equals(menuList.getMenuName())) {
                 return true;
             }
         }

@@ -4,8 +4,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class PriceFormatterUtilTest {
 
     @DisplayName("인자로 들어온 price를 포맷에 맞추어 반환한다.")

@@ -3,8 +3,8 @@ package christmas.domain.events;
 public class Gift {
 
     public Integer applyGiftEvent(Integer addedPrice) {
-
         int discountedAmount = 0;
+
         if (checkGiftEvent(addedPrice)) {
             discountedAmount += 25000;
         }

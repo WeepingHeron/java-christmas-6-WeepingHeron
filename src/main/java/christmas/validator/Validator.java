@@ -58,7 +58,6 @@ public class Validator {
     }
 
     private boolean isNotOnlyBeverage(Map<String, Integer> order) {
-
         for (Map.Entry<String, Integer> entry : order.entrySet()) {
             String menu = entry.getKey();
             if (!MenuList.getGroupByName(menu).equals("음료")) {

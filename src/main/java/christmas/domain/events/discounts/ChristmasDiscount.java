@@ -3,8 +3,8 @@ package christmas.domain.events.discounts;
 public class ChristmasDiscount {
 
     public Integer applyChristmasDiscount(Integer date) {
-
         int discountedAmount = 0;
+
         if (checkChristmasDiscount(date)) {
             discountedAmount = calculateChristmasDiscount(date);
         }
