@@ -24,8 +24,10 @@
 * Calculator
   * addPrice: Map 형태의 주문을 받아 총주문 금액을 계산
 * MenuList: 메뉴의 정보 및 관련 메서드를 enum 형태로 관리
+  * getGroup: Group을 반환
   * getMenuName: MenuName을 반환
-  * getPriceByName: 인자로 들어온 이름을 enum을 순회 및 대조하여 해당 메뉴의 가격 반환
+  * getGroupByName:인자로 들어온 이름의 Group 반환
+  * getPriceByName: 인자로 들어온 이름의 Price 반환
   * isValidNameAndGroup: 인자로 들어온 이름과 그룹의 일치 여부를 반환한다
   * isValidName: 인자로 들어온 이름이 메뉴 중에 있는지 반환한다
 * PromotionModel: 내부 로직을 처리하는 역할, 입/출력할 데이터를 관리
@@ -86,6 +88,17 @@
   * updateView: UI 실행 및 모델에 데이터 업데이트
   * runInputView: 입력 UI 실행
   * runOutputView: 출력 UI 실행
+
+## validator: 유효성 검증
+* Validator: 유효성 검증 메서드 관리
+  * isValidDate: 입력한 날짜의 범위에 대한 유효성을 검증한다
+  * isValidOrder: 주문 관련 유효성 검증을 총괄한다
+  * isValidMenuNameAndQuantity: 주문을 순회하며 메뉴명, 메뉴당 수량, 전체 수량에 대한 유효성을 검증한다
+  * checkMenuName: 메뉴의 이름을 검증한다
+  * checkMenuQuantity: 메뉴의 수량을 검증한다
+  * checkTotalQuantity: 전체 주문 수량을 검증한다
+  * isNotOnlyBeverage: 음료만 주문한 것은 아닌지 확인한다
+  * checkOrderWhileParsing: 주문을 받아 Map 형태로 파싱하는 과정에서 중복을 검증한다
 
 ## 요구 사항
 ### 사전 기능 정리
