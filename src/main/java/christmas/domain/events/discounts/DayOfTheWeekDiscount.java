@@ -24,7 +24,7 @@ public class DayOfTheWeekDiscount {
             String menuName = entry.getKey();
             Integer quantity = entry.getValue();
 
-            if (MenuList.isGroupByName(menuName, menuGroup)) {
+            if (MenuList.isValidNameAndGroup(menuName, menuGroup)) {
                 discountedAmount += 2023 * quantity;
             }
         }
