@@ -25,27 +25,27 @@ public enum MenuList {
         this.Price = price;
     }
 
-    public String getMenuName() {
-        return this.MenuName;
-    }
-
     public String getGroup() {
         return Group;
     }
 
-    public static Integer getPriceByName(String name) {
-        for (MenuList menuList : MenuList.values()) {
-            if (name.equals(menuList.getMenuName())) {
-                return menuList.Price;
-            }
-        }
-        return null;
+    public String getMenuName() {
+        return this.MenuName;
     }
 
     public static String getGroupByName(String name) {
         for (MenuList menuList : MenuList.values()) {
             if (name.equals(menuList.getMenuName())) {
                 return menuList.Group;
+            }
+        }
+        return null;
+    }
+
+    public static Integer getPriceByName(String name) {
+        for (MenuList menuList : MenuList.values()) {
+            if (name.equals(menuList.getMenuName())) {
+                return menuList.Price;
             }
         }
         return null;
