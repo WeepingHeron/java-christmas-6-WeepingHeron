@@ -42,9 +42,18 @@ public enum MenuList {
         return null;
     }
 
-    public static boolean isGroupByName(String name, String group) {
+    public static boolean isValidNameAndGroup(String name, String group) {
         for (MenuList menuList : MenuList.values()) {
             if (name.equals(menuList.getMenuName()) && group.equals(menuList.getGroup())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean isValidName(String menu) {
+        for (MenuList menuList : MenuList.values()) {
+            if (menu.equals(menuList.getMenuName())) {
                 return true;
             }
         }
