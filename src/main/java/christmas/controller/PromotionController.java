@@ -2,6 +2,7 @@ package christmas.controller;
 
 import christmas.domain.PromotionModel;
 import christmas.domain.events.Applier;
+import christmas.validator.Validator;
 import christmas.view.InputView;
 import christmas.view.OutputView;
 
@@ -11,25 +12,51 @@ public class PromotionController {
     private InputView inputView;
     private OutputView outputView;
     private Applier applier;
+    private Validator validator;
 
-    public PromotionController(PromotionModel model, InputView inputView, OutputView outputView, Applier applier) {
+    public PromotionController(PromotionModel model, InputView inputView, OutputView outputView, Applier applier, Validator validator) {
         this.model = model;
         this.inputView = inputView;
         this.outputView = outputView;
         this.applier = applier;
+        this.validator = validator;
     }
 
     public void updateView() {
-        runInputView();
+        runReadDate();
+        runReadOrder();
         model.setAddedPrice(model.getOrder());
-        applier.applyDiscounts(model, model.getAddedPrice(), model.getDate(), model.getOrder());
-        applier.applyEvents(model, model.getAddedPrice(), model.getDate(), model.getOrder());
+        if (model.getAddedPrice() >= 10000) {
+            applier.applyDiscounts(model, model.getAddedPrice(), model.getDate(), model.getOrder());
+            applier.applyEvents(model, model.getAddedPrice(), model.getDate(), model.getOrder());
+        }
         runOutputView();
     }
 
-    private void runInputView() {
-        model.setDate(inputView.readDate());
-        model.setOrder(inputView.readOrder());
+    private void runReadDate() {
+        boolean isValid = false;
+        while (!isValid) {
+            try {
+                model.setDate(inputView.readDate());
+                isValid = validator.isValidDate(model.getDate());
+            } catch (NumberFormatException e) {
+                System.out.println("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
+            } catch (IllegalArgumentException e) {
+                System.out.println("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
+            }
+        }
+    }
+
+    private void runReadOrder() {
+        boolean isValid = false;
+        while (!isValid) {
+            try {
+                model.setOrder(inputView.readOrder());
+                isValid = validator.isValidOrder(model.getOrder());
+            } catch (IllegalArgumentException e) {
+                System.out.println("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+            }
+        }
     }
 
     private void runOutputView() {
