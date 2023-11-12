@@ -18,6 +18,6 @@ public class Application {
 
         PromotionController promotionController = new PromotionController(model, inputView, outputView, applier, validator);
 
-        promotionController.updateView();
+        promotionController.runPlanner();
     }
 }

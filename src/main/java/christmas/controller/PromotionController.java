@@ -22,7 +22,7 @@ public class PromotionController {
         this.validator = validator;
     }
 
-    public void updateView() {
+    public void runPlanner() {
         runReadDate();
         runReadOrder();
         model.setAddedPrice(model.getOrder());
