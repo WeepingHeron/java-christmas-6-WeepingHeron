@@ -27,8 +27,8 @@ public class PromotionController {
         runReadOrder();
         model.setAddedPrice(model.getOrder());
         if (model.getAddedPrice() >= 10000) {
-            applier.applyDiscounts(model.getDate(), model.getAddedPrice(), model.getOrder(), model);
-            applier.applyEvents(model, model.getAddedPrice(), model.getDate(), model.getOrder());
+            applier.applyDiscounts(model, model.getDate(), model.getAddedPrice(), model.getOrder());
+            applier.applyEvents(model, model.getDate(), model.getAddedPrice(), model.getOrder());
         }
         runOutputView();
     }

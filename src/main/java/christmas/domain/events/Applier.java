@@ -14,7 +14,7 @@ public class Applier {
     DayOfTheWeekDiscount dayOfTheWeekDiscount = new DayOfTheWeekDiscount();
     HolidayDiscount holidayDiscount = new HolidayDiscount();
 
-    public void applyDiscounts(Integer date, Integer addedPrice, Map<String, Integer> order, PromotionModel model) {
+    public void applyDiscounts(PromotionModel model, Integer date, Integer addedPrice, Map<String, Integer> order) {
         Integer discountedAmount = 0;
         discountedAmount
                 += christmasDiscount.applyChristmasDiscount(date)
@@ -25,7 +25,7 @@ public class Applier {
         model.setDiscountedAmount(discountedAmount);
     }
 
-    public void applyEvents(PromotionModel model, Integer addedPrice, Integer date, Map<String, Integer> order) {
+    public void applyEvents(PromotionModel model, Integer date, Integer addedPrice, Map<String, Integer> order) {
         if (christmasDiscount.applyChristmasDiscount(date) > 0) {
             model.setAppliedEvents("크리스마스 디데이 할인", christmasDiscount.applyChristmasDiscount(date));
         }
