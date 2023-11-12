@@ -14,7 +14,7 @@ class GiftTest {
         Integer validPrice = 120000;
         Gift gift = new Gift();
 
-        // Then
+        // When
         Integer result1 = gift.applyGiftEvent(invalidPrice);
         Integer result2 = gift.applyGiftEvent(validPrice);
 
