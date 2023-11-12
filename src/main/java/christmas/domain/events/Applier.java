@@ -14,7 +14,7 @@ public class Applier {
     DayOfTheWeekDiscount dayOfTheWeekDiscount = new DayOfTheWeekDiscount();
     HolidayDiscount holidayDiscount = new HolidayDiscount();
 
-    public void applyDiscounts(PromotionModel model, Integer addedPrice, Integer date, Map<String, Integer> order) {
+    public void applyDiscounts(Integer date, Integer addedPrice, Map<String, Integer> order, PromotionModel model) {
         Integer discountedAmount = 0;
         discountedAmount
                 += christmasDiscount.applyChristmasDiscount(date)
