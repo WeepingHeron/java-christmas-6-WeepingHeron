@@ -14,7 +14,7 @@ class DayOfTheWeekDiscountTest {
     DayOfTheWeekDiscount dayOfTheWeekDiscount = new DayOfTheWeekDiscount();
 
     @BeforeEach
-    void setup() {
+    void setUp() {
         order.put("티본스테이크", 1);
         order.put("초코케이크", 2);
         order.put("제로콜라", 1);
