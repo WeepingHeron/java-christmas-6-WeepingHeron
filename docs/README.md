@@ -85,8 +85,9 @@
 
 ## controller: 뷰와 모델 간의 중개
 * PromotionController: 입력을 받아 모델을 업데이트하고, 모델의 변경을 감지하여 뷰를 업데이트
-  * updateView: UI 실행 및 모델에 데이터 업데이트
-  * runInputView: 입력 UI 실행
+  * runPlanner: UI 실행 및 모델에 데이터 업데이트
+  * runReadDate: 방문 날짜 입력 UI 실행
+  * runReadOrder: 주문 입력 UI 실행
   * runOutputView: 출력 UI 실행
 
 ## validator: 유효성 검증
