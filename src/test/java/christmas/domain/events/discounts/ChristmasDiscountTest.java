@@ -12,14 +12,17 @@ class ChristmasDiscountTest {
         // Given
         Integer date1 = 1;
         Integer date2 = 25;
+        Integer date3 = 26;
         ChristmasDiscount christmasDiscount = new ChristmasDiscount();
 
         // When
         Integer result1 = christmasDiscount.applyChristmasDiscount(date1);
         Integer result2 = christmasDiscount.applyChristmasDiscount(date2);
+        Integer result3 = christmasDiscount.applyChristmasDiscount(date3);
 
         // Then
         Assertions.assertEquals(1000, result1);
         Assertions.assertEquals(3400, result2);
+        Assertions.assertEquals(0, result3);
     }
 }
