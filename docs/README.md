@@ -28,8 +28,8 @@
   * getMenuName: MenuName을 반환
   * getGroupByName:인자로 들어온 이름의 Group 반환
   * getPriceByName: 인자로 들어온 이름의 Price 반환
-  * isValidNameAndGroup: 인자로 들어온 이름과 그룹의 일치 여부를 반환한다
-  * isValidName: 인자로 들어온 이름이 메뉴 중에 있는지 반환한다
+  * isExistentNameAndGroup: 인자로 들어온 이름과 그룹의 일치 여부를 반환한다
+  * isExistentName: 인자로 들어온 이름이 메뉴 중에 있는지 반환한다
 * PromotionModel: 내부 로직을 처리하는 역할, 입/출력할 데이터를 관리
   * getDate: 방문 날짜 반환
   * setDate: 방문 날짜 설정
@@ -72,7 +72,6 @@
 * InputView: 입력 UI를 담당
   * readDate: 방문 날짜 입력 UI
   * readOrder: 주문 입력 UI
-  * parseOrderInput: 입력받은 주문을 Map 형태로 가공
 * OutputView: 출력 UI를 담당
   * printDate: 방문 날짜 출력 UI
   * printMenu: 주문 출력 UI
