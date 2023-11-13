@@ -1,6 +1,6 @@
 package christmas.view;
 
-import christmas.util.PriceFormatterUtil;
+import christmas.view.util.PriceFormatterUtil;
 
 import java.util.Map;
 

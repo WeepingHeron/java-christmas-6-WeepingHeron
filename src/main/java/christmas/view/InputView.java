@@ -1,7 +1,7 @@
 package christmas.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import christmas.util.ParseOrderUtil;
+import christmas.view.util.ParseOrderUtil;
 
 import java.util.Map;
 
