@@ -1,4 +1,4 @@
-package christmas.domain.events;
+package christmas.domain.enums;
 
 public enum Calendar {
 

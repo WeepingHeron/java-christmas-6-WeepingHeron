@@ -1,4 +1,4 @@
-package christmas.domain.menu;
+package christmas.domain.enums;
 
 public enum MenuList {
 

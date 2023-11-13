@@ -1,7 +1,7 @@
 package christmas.domain.events.discounts;
 
-import christmas.domain.events.Calendar;
-import christmas.domain.menu.MenuList;
+import christmas.domain.enums.Calendar;
+import christmas.domain.enums.MenuList;
 
 import java.util.Map;
 

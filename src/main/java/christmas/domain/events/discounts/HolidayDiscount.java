@@ -1,6 +1,6 @@
 package christmas.domain.events.discounts;
 
-import christmas.domain.events.Calendar;
+import christmas.domain.enums.Calendar;
 
 public class HolidayDiscount {
 

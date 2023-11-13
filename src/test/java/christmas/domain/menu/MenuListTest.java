@@ -1,5 +1,6 @@
 package christmas.domain.menu;
 
+import christmas.domain.enums.MenuList;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
