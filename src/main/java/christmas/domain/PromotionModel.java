@@ -2,6 +2,7 @@ package christmas.domain;
 
 import christmas.domain.calculate.Calculator;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,7 +33,7 @@ public class PromotionModel {
     }
 
     public Map<String, Integer> getOrder() {
-        return order;
+        return Collections.unmodifiableMap(order);
     }
 
     public void setOrder(Map<String, Integer> order) {
@@ -40,7 +41,7 @@ public class PromotionModel {
     }
 
     public Map<String, Integer> getAppliedEvents() {
-        return appliedEvents;
+        return Collections.unmodifiableMap(appliedEvents);
     }
 
     public void setAppliedEvents(String key, Integer value) {
