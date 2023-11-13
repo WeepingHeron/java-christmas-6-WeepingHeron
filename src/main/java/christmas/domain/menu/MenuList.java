@@ -51,7 +51,7 @@ public enum MenuList {
         return null;
     }
 
-    public static boolean isValidNameAndGroup(String name, String group) {
+    public static boolean isExistentNameAndGroup(String name, String group) {
         for (MenuList menuList : MenuList.values()) {
             if (name.equals(menuList.getMenuName()) && group.equals(menuList.getGroup())) {
                 return true;
@@ -60,7 +60,7 @@ public enum MenuList {
         return false;
     }
 
-    public static boolean isValidName(String name) {
+    public static boolean isExistentName(String name) {
         for (MenuList menuList : MenuList.values()) {
             if (name.equals(menuList.getMenuName())) {
                 return true;

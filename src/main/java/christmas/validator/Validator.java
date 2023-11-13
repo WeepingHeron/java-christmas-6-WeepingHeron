@@ -37,7 +37,7 @@ public class Validator {
     }
 
     private void checkMenuName(String menu) {
-        if (!MenuList.isValidName(menu)) {
+        if (!MenuList.isExistentName(menu)) {
             throw new IllegalArgumentException("[ERROR] 존재하지 않는 메뉴가 있습니다.");
         }
     }

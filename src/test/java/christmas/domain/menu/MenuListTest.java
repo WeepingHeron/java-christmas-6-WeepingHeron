@@ -53,8 +53,8 @@ class MenuListTest {
         String desertGroup = "디저트";
 
         // When
-        boolean validResult = MenuList.isValidNameAndGroup(menuName, appetizerGroup);
-        boolean invalidResult = MenuList.isValidNameAndGroup(menuName, desertGroup);
+        boolean validResult = MenuList.isExistentNameAndGroup(menuName, appetizerGroup);
+        boolean invalidResult = MenuList.isExistentNameAndGroup(menuName, desertGroup);
 
         // Then
         Assertions.assertEquals(true, validResult);
@@ -70,9 +70,9 @@ class MenuListTest {
         String invalidMenu2 = "후라이드치킨";
 
         // When
-        boolean validResult = MenuList.isValidName(validMenu);
-        boolean invalidResult1 = MenuList.isValidName(invalidMenu1);
-        boolean invalidResult2 = MenuList.isValidName(invalidMenu2);
+        boolean validResult = MenuList.isExistentName(validMenu);
+        boolean invalidResult1 = MenuList.isExistentName(invalidMenu1);
+        boolean invalidResult2 = MenuList.isExistentName(invalidMenu2);
 
         // Then
         Assertions.assertEquals(true, validResult);
