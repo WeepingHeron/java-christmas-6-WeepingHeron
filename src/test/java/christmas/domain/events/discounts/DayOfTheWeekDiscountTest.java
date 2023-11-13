@@ -28,8 +28,8 @@ class DayOfTheWeekDiscountTest {
         Integer weekday = 3;
 
         // When
-        Integer result1 = dayOfTheWeekDiscount.applyDayOfTheWeekDiscount(order, weekend);
-        Integer result2 = dayOfTheWeekDiscount.applyDayOfTheWeekDiscount(order, weekday);
+        Integer result1 = dayOfTheWeekDiscount.applyDayOfTheWeekDiscount(weekend, order);
+        Integer result2 = dayOfTheWeekDiscount.applyDayOfTheWeekDiscount(weekday, order);
 
         // Then
         Assertions.assertEquals(2023, result1);

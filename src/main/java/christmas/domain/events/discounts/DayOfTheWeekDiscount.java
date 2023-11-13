@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class DayOfTheWeekDiscount {
 
-    public Integer applyDayOfTheWeekDiscount(Map<String, Integer> order, Integer date) {
+    public Integer applyDayOfTheWeekDiscount(Integer date, Map<String, Integer> order) {
         int discountedAmount = 0;
 
         if (Calendar.values()[date - 1].isWeekend()) {
