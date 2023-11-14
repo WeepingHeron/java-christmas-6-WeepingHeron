@@ -8,9 +8,9 @@ public class Validator {
 
     private static final Integer INITIAL_DATE_OF_DECEMBER = 1;
     private static final Integer LAST_DATE_OF_DECEMBER = 31;
-    public static final Integer MIN_MENU_QUANTITY = 1;
-    public static final Integer MIN_TOTAL_QUANTITY = 1;
-    public static final Integer MAX_TOTAL_QUANTITY = 20;
+    private static final Integer MIN_MENU_QUANTITY = 1;
+    private static final Integer MIN_TOTAL_QUANTITY = 1;
+    private static final Integer MAX_TOTAL_QUANTITY = 20;
 
     public boolean isValidDate (Integer date) {
         if (date < INITIAL_DATE_OF_DECEMBER || LAST_DATE_OF_DECEMBER < date) {
