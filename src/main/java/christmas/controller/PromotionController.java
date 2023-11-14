@@ -62,13 +62,6 @@ public class PromotionController {
         Integer benefit = calculator.calculateBenefit(model.getDate(), addedPrice, model.getOrder());
         Map<String, Integer> appliedEvents = calculator.calculateAppliedEvents(model.getDate(), addedPrice, model.getOrder());
 
-        outputView.printDate(model.getDate());
-        outputView.printMenu(model.getOrder());
-        outputView.printAddedPrice(addedPrice);
-        outputView.printGift(appliedEvents);
-        outputView.printAppliedEvents(appliedEvents);
-        outputView.printBenefit(benefit);
-        outputView.printFinalPrice(addedPrice, benefit);
-        outputView.printBadge(benefit);
+        outputView.printAll(model.getDate(), model.getOrder(), addedPrice, appliedEvents, benefit);
     }
 }
