@@ -1,4 +1,4 @@
-package christmas.tools;
+package christmas.view.tools;
 
 import christmas.view.tools.InputTool;
 import org.junit.jupiter.api.Assertions;
