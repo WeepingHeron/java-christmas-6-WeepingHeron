@@ -5,6 +5,10 @@ import java.util.Map;
 
 public class InputTool {
 
+    private static final int MENU_AND_QUANTITY_MATCHED = 2;
+    private static final int INDEX_OF_MENU = 0;
+    private static final int INDEX_OF_QUANTITY = 1;
+
     public Map<String, Integer> parseOrder(String input) {
         Map<String, Integer> parsedOrder = new HashMap<>();
 
@@ -17,10 +21,10 @@ public class InputTool {
     }
 
     private Map<String, Integer> putData(Map<String, Integer> parsedOrder, String[] menuAndQuantity) {
-        if (menuAndQuantity.length == 2) {
+        if (menuAndQuantity.length == MENU_AND_QUANTITY_MATCHED) {
             try {
-                String menu = menuAndQuantity[0];
-                int quantity = Integer.parseInt(menuAndQuantity[1]);
+                String menu = menuAndQuantity[INDEX_OF_MENU];
+                int quantity = Integer.parseInt(menuAndQuantity[INDEX_OF_QUANTITY]);
                 checkOrderWhileParsing(parsedOrder, menu);
                 parsedOrder.put(menu, quantity);
             } catch (NumberFormatException e) {
