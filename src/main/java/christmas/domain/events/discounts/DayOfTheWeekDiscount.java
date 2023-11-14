@@ -17,7 +17,7 @@ public class DayOfTheWeekDiscount {
         return discountedAmount += calculateDayOfTheWeekDiscount(order, "디저트");
     }
 
-    public Integer calculateDayOfTheWeekDiscount(Map<String, Integer> order, String menuGroup) {
+    private Integer calculateDayOfTheWeekDiscount(Map<String, Integer> order, String menuGroup) {
         int discountedAmount = 0;
 
         for (Map.Entry<String, Integer> entry : order.entrySet()) {

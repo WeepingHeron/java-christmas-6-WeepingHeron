@@ -28,27 +28,11 @@ class DayOfTheWeekDiscountTest {
         Integer weekday = 3;
 
         // When
-        Integer result1 = dayOfTheWeekDiscount.applyDayOfTheWeekDiscount(weekend, order);
-        Integer result2 = dayOfTheWeekDiscount.applyDayOfTheWeekDiscount(weekday, order);
+        Integer oneTBoneSteakDiscount = dayOfTheWeekDiscount.applyDayOfTheWeekDiscount(weekend, order);
+        Integer twoChocoCakesDiscount = dayOfTheWeekDiscount.applyDayOfTheWeekDiscount(weekday, order);
 
         // Then
-        Assertions.assertEquals(2023, result1);
-        Assertions.assertEquals(4046, result2);
-    }
-
-    @DisplayName("인자로 들어온 group명에 따라 할인을 진행한다.")
-    @Test
-    void calculateDayOfTheWeekDiscountTest() {
-        // Given
-        String group1 = "메인";
-        String group2 = "디저트";
-
-        // When
-        Integer result1 = dayOfTheWeekDiscount.calculateDayOfTheWeekDiscount(order, group1);
-        Integer result2 = dayOfTheWeekDiscount.calculateDayOfTheWeekDiscount(order, group2);
-
-        // Then
-        Assertions.assertEquals(2023, result1);
-        Assertions.assertEquals(4046, result2);
+        Assertions.assertEquals(2023, oneTBoneSteakDiscount);
+        Assertions.assertEquals(4046, twoChocoCakesDiscount);
     }
 }
