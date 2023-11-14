@@ -16,7 +16,6 @@ public class Calculator {
     private static final int INITIAL_BENEFIT = 0;
     private static final int EVENT_THRESHOLD = 10000;
     private static final int NO_DISCOUNT_APPLIED = 0;
-    private static final int INDEX_ADJUSTMENT = 1;
 
     Gift gift = new Gift();
     ChristmasDiscount christmasDiscount = new ChristmasDiscount();
@@ -76,9 +75,9 @@ public class Calculator {
     }
 
     private void checkDayOfTheWeekEvent(Map<String, Integer> appliedEvents, Integer date, Map<String, Integer> order) {
-        if (Calendar.values()[date - INDEX_ADJUSTMENT].isWeekend()) {
+        if (Calendar.isWeekend(date)) {
             appliedEvents.put("주말 할인", dayOfTheWeekDiscount.applyDayOfTheWeekDiscount(date, order));
-        } else if (!Calendar.values()[date - INDEX_ADJUSTMENT].isWeekend()) {
+        } else if (!Calendar.isWeekend(date)) {
             appliedEvents.put("평일 할인", dayOfTheWeekDiscount.applyDayOfTheWeekDiscount(date, order));
         }
     }
