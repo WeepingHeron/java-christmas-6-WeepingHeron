@@ -58,7 +58,7 @@ public class OutputView {
         System.out.println();
     }
 
-    public void printDiscountedAmount(Integer discountedAmount) {
+    public void printBenefit(Integer discountedAmount) {
         System.out.println("<총혜택 금액>");
         System.out.println("-" + format.getFormattedPrice(discountedAmount));
         System.out.println();
