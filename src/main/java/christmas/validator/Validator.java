@@ -6,15 +6,21 @@ import java.util.Map;
 
 public class Validator {
 
+    private static final Integer INITIAL_DATE_OF_DECEMBER = 1;
+    private static final Integer LAST_DATE_OF_DECEMBER = 31;
+    public static final Integer MIN_MENU_QUANTITY = 1;
+    public static final Integer MIN_TOTAL_QUANTITY = 1;
+    public static final Integer MAX_TOTAL_QUANTITY = 20;
+
     public boolean isValidDate (Integer date) {
-        if (date < 1 || 31 < date) {
+        if (date < INITIAL_DATE_OF_DECEMBER || LAST_DATE_OF_DECEMBER < date) {
             throw new IllegalArgumentException("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
         }
         return true;
     }
 
     public boolean isValidOrder(Map<String, Integer> order) {
-        if (isValidMenuNameAndQuantity(order) == true && isNotOnlyBeverage(order) == true) {
+        if (isValidMenuNameAndQuantity(order) && isNotOnlyBeverage(order)) {
             return true;
         }
         throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
@@ -43,16 +49,16 @@ public class Validator {
     }
 
     private void checkMenuQuantity(Integer quantity) {
-        if (quantity <= 0) {
+        if (quantity < MIN_MENU_QUANTITY) {
             throw new IllegalArgumentException("[ERROR] 메뉴는 1개 이상부터 주문 가능합니다.");
         }
     }
 
     private void checkTotalQuantity(Integer totalQuantity) {
-        if (totalQuantity <= 0) {
+        if (totalQuantity < MIN_TOTAL_QUANTITY) {
             throw new IllegalArgumentException("[ERROR] 메뉴를 주문해 주세요.");
         }
-        if (totalQuantity > 20) {
+        if (totalQuantity > MAX_TOTAL_QUANTITY) {
             throw new IllegalArgumentException("[ERROR] 메뉴는 한 번에 최대 20개까지만 주문할 수 있습니다.");
         }
     }
