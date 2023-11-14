@@ -7,11 +7,13 @@ import java.util.Map;
 
 public class DayOfTheWeekDiscount {
 
+    private static final int INDEX_ADJUSTMENT = 1;
+    private static final int NO_DISCOUNT_APPLIED = 0;
     private static final int DISCOUNT_PER_ITEM = 2023;
 
     public Integer applyDayOfTheWeekDiscount(Integer date, Map<String, Integer> order) {
 
-        if (Calendar.values()[date - 1].isWeekend()) {
+        if (Calendar.values()[date - INDEX_ADJUSTMENT].isWeekend()) {
             return calculateDayOfTheWeekDiscount(order, "메인");
         }
 
@@ -19,7 +21,7 @@ public class DayOfTheWeekDiscount {
     }
 
     private Integer calculateDayOfTheWeekDiscount(Map<String, Integer> order, String menuGroup) {
-        int discountedAmount = 0;
+        int discountedAmount = NO_DISCOUNT_APPLIED;
 
         for (Map.Entry<String, Integer> entry : order.entrySet()) {
             String menuName = entry.getKey();

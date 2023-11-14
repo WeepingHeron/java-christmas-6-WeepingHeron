@@ -12,7 +12,11 @@ import java.util.Map;
 
 public class Calculator {
 
+    private static final int INITIAL_ADDED_PRICE = 0;
+    private static final int INITIAL_BENEFIT = 0;
     private static final int EVENT_THRESHOLD = 10000;
+    private static final int NO_DISCOUNT_APPLIED = 0;
+    private static final int INDEX_ADJUSTMENT = 1;
 
     Gift gift = new Gift();
     ChristmasDiscount christmasDiscount = new ChristmasDiscount();
@@ -20,7 +24,7 @@ public class Calculator {
     HolidayDiscount holidayDiscount = new HolidayDiscount();
 
     public Integer calculateAddedPrice(Map<String, Integer> order) {
-        Integer addedPrice = 0;
+        Integer addedPrice = INITIAL_ADDED_PRICE;
 
         for (Map.Entry<String, Integer> entry : order.entrySet()) {
             String menuName = entry.getKey();
@@ -33,7 +37,7 @@ public class Calculator {
     }
 
     public Integer calculateBenefit(Integer date, Integer addedPrice, Map<String, Integer> order) {
-        Integer benefit = 0;
+        Integer benefit = INITIAL_BENEFIT;
 
         if (addedPrice >= EVENT_THRESHOLD) {
             benefit
@@ -57,24 +61,24 @@ public class Calculator {
     }
 
     private void checkEvents(Map<String, Integer> appliedEvents, Integer date, Integer addedPrice, Map<String, Integer> order) {
-        if (christmasDiscount.applyChristmasDiscount(date) > 0) {
+        if (christmasDiscount.applyChristmasDiscount(date) > NO_DISCOUNT_APPLIED) {
             appliedEvents.put("크리스마스 디데이 할인", christmasDiscount.applyChristmasDiscount(date));
         }
-        if (gift.applyGiftEvent(addedPrice) > 0) {
+        if (gift.applyGiftEvent(addedPrice) > NO_DISCOUNT_APPLIED) {
             appliedEvents.put("증정 이벤트", gift.applyGiftEvent(addedPrice));
         }
-        if (dayOfTheWeekDiscount.applyDayOfTheWeekDiscount(date, order) > 0) {
+        if (dayOfTheWeekDiscount.applyDayOfTheWeekDiscount(date, order) > NO_DISCOUNT_APPLIED) {
             checkDayOfTheWeekEvent(appliedEvents, date, order);
         }
-        if (holidayDiscount.applyHolidayDiscount(date) > 0) {
+        if (holidayDiscount.applyHolidayDiscount(date) > NO_DISCOUNT_APPLIED) {
             appliedEvents.put("특별 할인", holidayDiscount.applyHolidayDiscount(date));
         }
     }
 
     private void checkDayOfTheWeekEvent(Map<String, Integer> appliedEvents, Integer date, Map<String, Integer> order) {
-        if (Calendar.values()[date - 1].isWeekend()) {
+        if (Calendar.values()[date - INDEX_ADJUSTMENT].isWeekend()) {
             appliedEvents.put("주말 할인", dayOfTheWeekDiscount.applyDayOfTheWeekDiscount(date, order));
-        } else if (!Calendar.values()[date - 1].isWeekend()) {
+        } else if (!Calendar.values()[date - INDEX_ADJUSTMENT].isWeekend()) {
             appliedEvents.put("평일 할인", dayOfTheWeekDiscount.applyDayOfTheWeekDiscount(date, order));
         }
     }
