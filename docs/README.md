@@ -36,7 +36,7 @@
   * getMenuName: MenuName을 반환
   * getGroupByName:인자로 들어온 이름의 Group 반환
   * getPriceByName: 인자로 들어온 이름의 Price 반환
-  * isExistentNameAndGroup: 인자로 들어온 이름과 그룹의 일치 여부를 반환한다
+  * isExistentMatchOfNameAndGroup: 인자로 들어온 이름과 그룹의 일치 여부를 반환한다
   * isExistentName: 인자로 들어온 이름이 메뉴 중에 있는지 반환한다
 ### calculator
 * Calculator
