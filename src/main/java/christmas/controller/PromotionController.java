@@ -1,35 +1,30 @@
 package christmas.controller;
 
 import christmas.domain.PromotionModel;
-import christmas.domain.events.Applier;
+import christmas.domain.calculator.Calculator;
 import christmas.validator.Validator;
 import christmas.view.InputView;
 import christmas.view.OutputView;
 
+import java.util.Map;
+
 public class PromotionController {
+
+    Validator validator = new Validator();
 
     private PromotionModel model;
     private InputView inputView;
     private OutputView outputView;
-    private Applier applier;
-    private Validator validator;
 
-    public PromotionController(PromotionModel model, InputView inputView, OutputView outputView, Applier applier, Validator validator) {
+    public PromotionController(PromotionModel model, InputView inputView, OutputView outputView) {
         this.model = model;
         this.inputView = inputView;
         this.outputView = outputView;
-        this.applier = applier;
-        this.validator = validator;
     }
 
     public void runPlanner() {
         runReadDate();
         runReadOrder();
-        model.setAddedPrice(model.getOrder());
-        if (model.getAddedPrice() >= 10000) {
-            applier.applyDiscounts(model, model.getDate(), model.getAddedPrice(), model.getOrder());
-            applier.applyEvents(model, model.getDate(), model.getAddedPrice(), model.getOrder());
-        }
         runOutputView();
     }
 
@@ -62,13 +57,18 @@ public class PromotionController {
     }
 
     private void runOutputView() {
+        Calculator calculator = new Calculator();
+        Integer addedPrice = calculator.calculateAddedPrice(model.getOrder());
+        Integer benefit = calculator.calculateBenefit(model.getDate(), addedPrice, model.getOrder());
+        Map<String, Integer> appliedEvents = calculator.calculateAppliedEvents(model.getDate(), addedPrice, model.getOrder());
+
         outputView.printDate(model.getDate());
         outputView.printMenu(model.getOrder());
-        outputView.printAddedPrice(model.getAddedPrice());
-        outputView.printGift(model.getAppliedEvents());
-        outputView.printAppliedEvents(model.getAppliedEvents());
-        outputView.printDiscountedAmount(model.getDiscountedAmount());
-        outputView.printFinalPrice(model.getAddedPrice(), model.getDiscountedAmount());
-        outputView.printBadge(model.getDiscountedAmount());
+        outputView.printAddedPrice(addedPrice);
+        outputView.printGift(appliedEvents);
+        outputView.printAppliedEvents(appliedEvents);
+        outputView.printBenefit(benefit);
+        outputView.printFinalPrice(addedPrice, benefit);
+        outputView.printBadge(benefit);
     }
 }
