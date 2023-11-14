@@ -104,17 +104,4 @@ class ValidatorTest {
         // Then
         Assertions.assertThrows(IllegalArgumentException.class, () -> validator.isValidOrder(onlyBeverage));
     }
-
-    @DisplayName("Map에 새로운 데이터를 추가할 때 겹치는 key가 있는지 확인한다.")
-    @Test
-    void checkOrderWhileParsingTest() {
-        // Given
-        String existentMenu = "제로콜라";
-        String nonexistentMenu = "레드와인";
-
-        // When & Then
-        Assertions.assertThrows(IllegalArgumentException.class, () -> validator.checkOrderWhileParsing(order, existentMenu));
-        Assertions.assertDoesNotThrow(() -> validator.checkOrderWhileParsing(order, nonexistentMenu));
-
-    }
 }

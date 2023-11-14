@@ -67,10 +67,4 @@ public class Validator {
 
         throw new IllegalArgumentException("[ERROR] 음료만 주문 시, 주문할 수 없습니다.");
     }
-
-    public void checkOrderWhileParsing(Map<String, Integer> order, String menu) {
-        if (order.containsKey(menu)) {
-            throw new IllegalArgumentException("[ERROR] 중복된 메뉴가 있습니다. 다시 입력해 주세요.");
-        }
-    }
 }
