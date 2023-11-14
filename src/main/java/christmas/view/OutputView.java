@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class OutputView {
 
-    PriceFormatterUtil format = new PriceFormatterUtil();
+    PriceFormatterUtil util = new PriceFormatterUtil();
 
     public void printDate(Integer date) {
         System.out.println("12월 " + date + "일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!");
@@ -27,7 +27,7 @@ public class OutputView {
 
     public void printAddedPrice(Integer addedPrice) {
         System.out.println("<할인 전 총주문 금액>");
-        System.out.println(format.getFormattedPrice(addedPrice));
+        System.out.println(util.getFormattedPrice(addedPrice));
         System.out.println();
     }
 
@@ -50,7 +50,7 @@ public class OutputView {
             Integer discountedAmount = entry.getValue();
 
             System.out.print(appliedEvent + ": -");
-            System.out.println(format.getFormattedPrice(discountedAmount));
+            System.out.println(util.getFormattedPrice(discountedAmount));
         }
         if (appliedEvents.isEmpty()) {
             System.out.println("없음");
@@ -60,16 +60,16 @@ public class OutputView {
 
     public void printBenefit(Integer discountedAmount) {
         System.out.println("<총혜택 금액>");
-        System.out.println("-" + format.getFormattedPrice(discountedAmount));
+        System.out.println("-" + util.getFormattedPrice(discountedAmount));
         System.out.println();
     }
 
     public void printFinalPrice(Integer addedPrice, Integer discountedAmount) {
         System.out.println("<할인 후 예상 결제 금액>");
         if (addedPrice >= 120000) {
-            System.out.println(format.getFormattedPrice(addedPrice - discountedAmount + 25000));
+            System.out.println(util.getFormattedPrice(addedPrice - discountedAmount + 25000));
         } else if (addedPrice < 120000) {
-            System.out.println(format.getFormattedPrice(addedPrice - discountedAmount));
+            System.out.println(util.getFormattedPrice(addedPrice - discountedAmount));
         }
         System.out.println();
     }
