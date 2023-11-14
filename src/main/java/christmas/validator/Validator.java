@@ -1,6 +1,6 @@
 package christmas.validator;
 
-import christmas.domain.menu.MenuList;
+import christmas.domain.enums.MenuList;
 
 import java.util.Map;
 
