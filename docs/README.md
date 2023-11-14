@@ -30,6 +30,7 @@
 * Calendar: 12월 달력의 날짜에 담긴 주말, 공휴일의 정보 및 관련 메서드를 enum 형태로 관리
   * isWeekend: 주말 여부를 boolean 형태로 반환
   * isHoliday: 공휴일 여부를 boolean 형태로 반환
+  * findByDate: 인자로 들어온 날짜에 해당하는 value를 반환
 * MenuList: 메뉴의 정보 및 관련 메서드를 enum 형태로 관리
   * getGroup: Group을 반환
   * getMenuName: MenuName을 반환
