@@ -1,19 +1,35 @@
 package christmas.view;
 
-import christmas.view.util.PriceFormatterUtil;
+import christmas.view.tools.OutputTool;
 
 import java.util.Map;
 
 public class OutputView {
 
-    PriceFormatterUtil util = new PriceFormatterUtil();
+    OutputTool outputTool = new OutputTool();
 
-    public void printDate(Integer date) {
+    public void printAll(
+            Integer date,
+            Map<String, Integer> order,
+            Integer addedPrice,
+            Map<String, Integer> appliedEvents,
+            Integer benefit) {
+        printDate(date);
+        printMenu(order);
+        printAddedPrice(addedPrice);
+        printGift(appliedEvents);
+        printAppliedEvents(appliedEvents);
+        printBenefit(benefit);
+        printFinalPrice(addedPrice, benefit);
+        printBadge(benefit);
+    }
+
+    private void printDate(Integer date) {
         System.out.println("12월 " + date + "일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!");
         System.out.println();
     }
 
-    public void printMenu(Map<String, Integer> order) {
+    private void printMenu(Map<String, Integer> order) {
         System.out.println("<주문 메뉴>");
 
         for (Map.Entry<String, Integer> entry : order.entrySet()) {
@@ -25,13 +41,13 @@ public class OutputView {
         System.out.println();
     }
 
-    public void printAddedPrice(Integer addedPrice) {
+    private void printAddedPrice(Integer addedPrice) {
         System.out.println("<할인 전 총주문 금액>");
-        System.out.println(util.getFormattedPrice(addedPrice));
+        System.out.println(outputTool.formatPrice(addedPrice));
         System.out.println();
     }
 
-    public void printGift(Map<String, Integer> appliedEvents) {
+    private void printGift(Map<String, Integer> appliedEvents) {
         System.out.println("<증정 메뉴>");
 
         if (appliedEvents.containsKey("증정 이벤트")) {
@@ -42,7 +58,7 @@ public class OutputView {
         System.out.println();
     }
 
-    public void printAppliedEvents(Map<String, Integer> appliedEvents) {
+    private void printAppliedEvents(Map<String, Integer> appliedEvents) {
         System.out.println("<혜택 내역>");
 
         for (Map.Entry<String, Integer> entry : appliedEvents.entrySet()) {
@@ -50,7 +66,7 @@ public class OutputView {
             Integer discountedAmount = entry.getValue();
 
             System.out.print(appliedEvent + ": -");
-            System.out.println(util.getFormattedPrice(discountedAmount));
+            System.out.println(outputTool.formatPrice(discountedAmount));
         }
         if (appliedEvents.isEmpty()) {
             System.out.println("없음");
@@ -58,31 +74,31 @@ public class OutputView {
         System.out.println();
     }
 
-    public void printBenefit(Integer discountedAmount) {
+    private void printBenefit(Integer benefit) {
         System.out.println("<총혜택 금액>");
-        System.out.println("-" + util.getFormattedPrice(discountedAmount));
+        System.out.println("-" + outputTool.formatPrice(benefit));
         System.out.println();
     }
 
-    public void printFinalPrice(Integer addedPrice, Integer discountedAmount) {
+    private void printFinalPrice(Integer addedPrice, Integer benefit) {
         System.out.println("<할인 후 예상 결제 금액>");
         if (addedPrice >= 120000) {
-            System.out.println(util.getFormattedPrice(addedPrice - discountedAmount + 25000));
+            System.out.println(outputTool.formatPrice(addedPrice - benefit + 25000));
         } else if (addedPrice < 120000) {
-            System.out.println(util.getFormattedPrice(addedPrice - discountedAmount));
+            System.out.println(outputTool.formatPrice(addedPrice - benefit));
         }
         System.out.println();
     }
 
-    public void printBadge(Integer discountedAmount) {
+    private void printBadge(Integer benefit) {
         System.out.println("<12월 이벤트 배지>");
-        if (discountedAmount >= 20000) {
+        if (benefit >= 20000) {
             System.out.println("산타");
-        } else if (discountedAmount >= 10000) {
+        } else if (benefit >= 10000) {
             System.out.println("트리");
-        } else if (discountedAmount >= 5000) {
+        } else if (benefit >= 5000) {
             System.out.println("별");
-        } else if (discountedAmount >= 0) {
+        } else if (benefit >= 0) {
             System.out.println("없음");
         }
     }
