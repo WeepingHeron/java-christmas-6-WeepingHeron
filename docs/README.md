@@ -21,8 +21,15 @@
 
 ## 클래스 목록
 ## domain: 핵심 기능
-* Calculator
-  * addPrice: Map 형태의 주문을 받아 총주문 금액을 계산
+* PromotionModel: 날짜와 주문 데이터 관리
+  * getDate: 방문 날짜 반환
+  * setDate: 방문 날짜 설정
+  * getOrder: 주문 반환
+  * setOrder: 주문 설정
+### enum
+* Calendar: 12월 달력의 날짜에 담긴 주말, 공휴일의 정보 및 관련 메서드를 enum 형태로 관리
+  * isWeekend: 주말 여부를 boolean 형태로 반환
+  * isHoliday: 공휴일 여부를 boolean 형태로 반환
 * MenuList: 메뉴의 정보 및 관련 메서드를 enum 형태로 관리
   * getGroup: Group을 반환
   * getMenuName: MenuName을 반환
@@ -30,24 +37,14 @@
   * getPriceByName: 인자로 들어온 이름의 Price 반환
   * isExistentNameAndGroup: 인자로 들어온 이름과 그룹의 일치 여부를 반환한다
   * isExistentName: 인자로 들어온 이름이 메뉴 중에 있는지 반환한다
-* PromotionModel: 내부 로직을 처리하는 역할, 입/출력할 데이터를 관리
-  * getDate: 방문 날짜 반환
-  * setDate: 방문 날짜 설정
-  * getAddedPrice: 총주문 금액 반환
-  * setAddedPrice: 총주문 금액 설정
-  * getOrder: 주문 반환
-  * setOrder: 주문 설정
-  * getAppliedEvents: 적용된 혜택 반환
-  * setAppliedEvents: 적용된 혜택 설정
-  * getDiscountedAmount: 총혜택 금액 반환
-  * setDiscountedAmount: 총혜택 금액 설정
-* Calendar: 12월 달력의 날짜에 담긴 주말, 공휴일의 정보 및 관련 메서드를 enum 형태로 관리
-  * isWeekend: 주말 여부를 boolean 형태로 반환
-  * isHoliday: 공휴일 여부를 boolean 형태로 반환
-* Applier: 할인 정책의 로직을 모아 model의 데이터를 업데이트
-  * applyDiscounts: 총혜택 금액을 모델에 전달
-  * applyEvents: 적용된 이벤트를 모델에 전달
-  * applyDayOfTheWeekEvent: applyEvents에서 분리된 로직, 요일에 따라 다른 이벤트를 모델에 전달
+### calculator
+* Calculator
+  * calculateAddedPrice: 주문을 받아 총주문 금액 산출
+  * calculateBenefit: 날짜, 총주문 금액, 주문을 받아 총혜택 금액 산출
+  * calculateAppliedEvents: 날짜, 총주문 금액, 주문을 받아 적용된 이벤트 산출
+  * checkEvents: 이벤트 정책의 조건을 확인하고 이벤트 적용
+  * checkDayOfTheWeekEvent: 평일/주말을 판정하여 요일별 할인 적용
+### events
 * Gift: 할인 전 총주문 금액이 12만원 이상일 때, 샴페인 1개 증정
   * applyGiftEvent: 증정으로 인해 혜택을 본 가격을 반환
   * checkGiftEvent: 이벤트의 조건을 통과하는지 확인
@@ -61,12 +58,6 @@
 * HolidayDiscount: 공휴일에는 총주문 금액에서 1000원 할인
   * applyHolidayDiscount: 날짜와 달력을 비교하여 할인 금액을 반환
 
-## util: 뷰와 모델 양쪽에서 사용
-* PriceFormatterUtil
-  * getFormattedPrice: 인자로 들어온 가격을 포맷에 맞추어 반환
-* ParseOrderUtil
-  * parseOrder: 입력을 ,와 -로 구분한다
-  * putData: Map에 데이터를 집어넣는 과정을 try-catch문에 넣는다
 
 ## view: UI 담당
 * InputView: 입력 UI를 담당
@@ -78,13 +69,19 @@
   * printAddedPrice: 총주문 금액 출력 UI
   * printGift: 증정 메뉴 출력 UI
   * printAppliedEvents: 혜택 내역 출력 UI
-  * printDiscountedAmount: 총혜택 금액 출력 UI
+  * printBenefit: 총혜택 금액 출력 UI
   * printFinalPrice: 할인 후 예상 결제 금액 출력 UI
   * printBadge: 총혜택 금액에 따른 이벤트 배지 출력 UI
+### util: 뷰에서 사용하는 편의 로직
+* ParseOrderUtil
+  * parseOrder: 입력을 ,와 -로 구분한다
+  * putData: Map에 데이터를 집어넣는 과정을 try-catch문에 넣는다
+* PriceFormatterUtil
+  * getFormattedPrice: 인자로 들어온 가격을 포맷에 맞추어 반환
 
 ## controller: 뷰와 모델 간의 중개
 * PromotionController: 입력을 받아 모델을 업데이트하고, 모델의 변경을 감지하여 뷰를 업데이트
-  * runPlanner: UI 실행 및 모델에 데이터 업데이트
+  * runPlanner: 전체 UI 실행
   * runReadDate: 방문 날짜 입력 UI 실행
   * runReadOrder: 주문 입력 UI 실행
   * runOutputView: 출력 UI 실행
