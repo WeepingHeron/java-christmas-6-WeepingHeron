@@ -41,7 +41,7 @@ class MenuListTest {
 
         // Then
         Assertions.assertEquals(6000, validResult);
-        Assertions.assertEquals(null, invalidResult);
+        Assertions.assertNull(invalidResult);
     }
 
     @DisplayName("인자로 들어온 메뉴와 그룹이 맞는지 확인한다.")
@@ -53,12 +53,12 @@ class MenuListTest {
         String desertGroup = "디저트";
 
         // When
-        boolean validResult = MenuList.isExistentNameAndGroup(menuName, appetizerGroup);
-        boolean invalidResult = MenuList.isExistentNameAndGroup(menuName, desertGroup);
+        boolean validResult = MenuList.isExistentMatchOfNameAndGroup(menuName, appetizerGroup);
+        boolean invalidResult = MenuList.isExistentMatchOfNameAndGroup(menuName, desertGroup);
 
         // Then
-        Assertions.assertEquals(true, validResult);
-        Assertions.assertEquals(false, invalidResult);
+        Assertions.assertTrue(validResult);
+        Assertions.assertFalse(invalidResult);
     }
 
     @DisplayName("인자로 들어온 메뉴가 존재하는지 확인한다.")
@@ -75,8 +75,8 @@ class MenuListTest {
         boolean invalidResult2 = MenuList.isExistentName(invalidMenu2);
 
         // Then
-        Assertions.assertEquals(true, validResult);
-        Assertions.assertEquals(false, invalidResult1);
-        Assertions.assertEquals(false, invalidResult2);
+        Assertions.assertTrue(validResult);
+        Assertions.assertFalse(invalidResult1);
+        Assertions.assertFalse(invalidResult2);
     }
 }
