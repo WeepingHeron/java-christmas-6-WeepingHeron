@@ -8,6 +8,7 @@ public class Validator {
 
     private static final Integer INITIAL_DATE_OF_DECEMBER = 1;
     private static final Integer LAST_DATE_OF_DECEMBER = 31;
+    private static final Integer INITIAL_TOTAL_QUANTITY = 0;
     private static final Integer MIN_MENU_QUANTITY = 1;
     private static final Integer MIN_TOTAL_QUANTITY = 1;
     private static final Integer MAX_TOTAL_QUANTITY = 20;
@@ -27,7 +28,7 @@ public class Validator {
     }
 
     private boolean isValidMenuNameAndQuantity(Map<String, Integer> order) {
-        int totalQuantity = 0;
+        int totalQuantity = INITIAL_TOTAL_QUANTITY;
 
         for (Map.Entry<String, Integer> entry : order.entrySet()) {
             String menu = entry.getKey();
