@@ -1,10 +1,10 @@
-package christmas.view.util;
+package christmas.view.tools;
 
 import java.text.DecimalFormat;
 
-public class PriceFormatterUtil {
+public class OutputTool {
 
-    public String getFormattedPrice(Integer price) {
+    public String formatPrice(Integer price) {
         DecimalFormat formatter = new DecimalFormat("###,###원");
 
         return formatter.format(price);
