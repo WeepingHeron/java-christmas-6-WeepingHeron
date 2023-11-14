@@ -2,8 +2,6 @@ package christmas;
 
 import christmas.controller.PromotionController;
 import christmas.domain.PromotionModel;
-import christmas.domain.events.Applier;
-import christmas.validator.Validator;
 import christmas.view.InputView;
 import christmas.view.OutputView;
 
@@ -13,10 +11,8 @@ public class Application {
         PromotionModel model = new PromotionModel();
         InputView inputView = new InputView();
         OutputView outputView = new OutputView();
-        Applier applier = new Applier();
-        Validator validator = new Validator();
 
-        PromotionController promotionController = new PromotionController(model, inputView, outputView, applier, validator);
+        PromotionController promotionController = new PromotionController(model, inputView, outputView);
 
         promotionController.runPlanner();
     }
