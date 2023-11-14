@@ -4,13 +4,13 @@ import christmas.domain.enums.Calendar;
 
 public class HolidayDiscount {
 
-    public Integer applyHolidayDiscount(Integer date) {
-        int discountAmount = 0;
+    private static final int HOLIDAY_DISCOUNT_AMOUNT = 1000;
 
+    public Integer applyHolidayDiscount(Integer date) {
         if (Calendar.values()[date - 1].isHoliday()) {
-            return discountAmount += 1000;
+            return HOLIDAY_DISCOUNT_AMOUNT;
         }
 
-        return discountAmount;
+        return 0;
     }
 }
