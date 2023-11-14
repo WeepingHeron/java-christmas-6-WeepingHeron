@@ -51,7 +51,7 @@ public enum MenuList {
         return null;
     }
 
-    public static boolean isExistentNameAndGroup(String name, String group) {
+    public static boolean isExistentMatchOfNameAndGroup(String name, String group) {
         for (MenuList menuList : MenuList.values()) {
             if (name.equals(menuList.getMenuName()) && group.equals(menuList.getGroup())) {
                 return true;
