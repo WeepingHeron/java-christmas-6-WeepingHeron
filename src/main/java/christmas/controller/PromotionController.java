@@ -10,11 +10,11 @@ import java.util.Map;
 
 public class PromotionController {
 
-    Validator validator = new Validator();
-
     private PromotionModel model;
     private InputView inputView;
     private OutputView outputView;
+
+    Validator validator = new Validator();
 
     public PromotionController(PromotionModel model, InputView inputView, OutputView outputView) {
         this.model = model;
