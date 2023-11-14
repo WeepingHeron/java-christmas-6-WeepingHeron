@@ -51,7 +51,8 @@
 * ChristmasDiscount: 크리스마스가 다가올수록 할인
   * applyChristmasDiscount: 날짜에 따라 할인된 금액 반환
   * checkChristmasDiscount: 이벤트의 조건을 통과하는지 확인
-  * calculateChristmasDiscount: 날짜를 받아 할인율 계산
+  * calculateChristmasDiscount: 경과일을 계산하여 할인액 반환
+  * calculateDiscountAmount: 경과일을 받아 할인액 계산
 * DayOfTheWeekDiscount: 요일에 따라 메뉴 할인
   * applyDayOfTheWeekDiscount: 요일에 따라 다른 메뉴를 할인 받고 할인 금액을 반환
   * calculateDayOfTheWeekDiscount: 인자로 들어온 메뉴의 그룹을 MenuList와 대조하여 할인 금액을 계산
@@ -64,6 +65,7 @@
   * readDate: 방문 날짜 입력 UI
   * readOrder: 주문 입력 UI
 * OutputView: 출력 UI를 담당
+  * printAll: 모든 출력 UI를 실행
   * printDate: 방문 날짜 출력 UI
   * printMenu: 주문 출력 UI
   * printAddedPrice: 총주문 금액 출력 UI
@@ -72,12 +74,13 @@
   * printBenefit: 총혜택 금액 출력 UI
   * printFinalPrice: 할인 후 예상 결제 금액 출력 UI
   * printBadge: 총혜택 금액에 따른 이벤트 배지 출력 UI
-### util: 뷰에서 사용하는 편의 로직
-* ParseOrderUtil
+### tools: 뷰에서 사용하는 서식 관련 로직
+* InputTool
   * parseOrder: 입력을 ,와 -로 구분한다
   * putData: Map에 데이터를 집어넣는 과정을 try-catch문에 넣는다
-* PriceFormatterUtil
-  * getFormattedPrice: 인자로 들어온 가격을 포맷에 맞추어 반환
+  * checkOrderWhileParsing: 주문을 받아 Map 형태로 파싱하는 과정에서 중복을 검증한다
+* OutputTool
+  * formatPrice: 인자로 들어온 가격을 포맷에 맞추어 반환
 
 ## controller: 뷰와 모델 간의 중개
 * PromotionController: 입력을 받아 모델을 업데이트하고, 모델의 변경을 감지하여 뷰를 업데이트
@@ -95,7 +98,6 @@
   * checkMenuQuantity: 메뉴의 수량을 검증한다
   * checkTotalQuantity: 전체 주문 수량을 검증한다
   * isNotOnlyBeverage: 음료만 주문한 것은 아닌지 확인한다
-  * checkOrderWhileParsing: 주문을 받아 Map 형태로 파싱하는 과정에서 중복을 검증한다
 
 ## 요구 사항
 ### 사전 기능 정리
