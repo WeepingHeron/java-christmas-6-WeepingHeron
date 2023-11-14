@@ -10,13 +10,13 @@ class GiftTest {
     @Test
     void applyGiftEventTest() {
         // Given
-        Integer invalidPrice = 119999;
-        Integer validPrice = 120000;
+        Integer withoutGift = 119999;
+        Integer withGift = 120000;
         Gift gift = new Gift();
 
         // When
-        Integer result1 = gift.applyGiftEvent(invalidPrice);
-        Integer result2 = gift.applyGiftEvent(validPrice);
+        Integer result1 = gift.applyGiftEvent(withoutGift);
+        Integer result2 = gift.applyGiftEvent(withGift);
 
         // Then
         Assertions.assertEquals(0, result1);
