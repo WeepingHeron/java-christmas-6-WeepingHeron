@@ -12,6 +12,8 @@ import java.util.Map;
 
 public class Calculator {
 
+    private static final int EVENT_THRESHOLD = 10000;
+
     Gift gift = new Gift();
     ChristmasDiscount christmasDiscount = new ChristmasDiscount();
     DayOfTheWeekDiscount dayOfTheWeekDiscount = new DayOfTheWeekDiscount();
@@ -33,7 +35,7 @@ public class Calculator {
     public Integer calculateBenefit(Integer date, Integer addedPrice, Map<String, Integer> order) {
         Integer benefit = 0;
 
-        if (addedPrice >= 10000) {
+        if (addedPrice >= EVENT_THRESHOLD) {
             benefit
                     += christmasDiscount.applyChristmasDiscount(date)
                     + gift.applyGiftEvent(addedPrice)
@@ -47,7 +49,7 @@ public class Calculator {
     public Map<String, Integer> calculateAppliedEvents(Integer date, Integer addedPrice, Map<String, Integer> order) {
         Map<String, Integer> appliedEvents = new HashMap<>();
 
-        if (addedPrice >= 10000) {
+        if (addedPrice >= EVENT_THRESHOLD) {
             checkEvents(appliedEvents, date, addedPrice, order);
         }
 
@@ -59,13 +61,13 @@ public class Calculator {
             appliedEvents.put("크리스마스 디데이 할인", christmasDiscount.applyChristmasDiscount(date));
         }
         if (gift.applyGiftEvent(addedPrice) > 0) {
-            appliedEvents.put("증정 이벤트", 25000);
+            appliedEvents.put("증정 이벤트", gift.applyGiftEvent(addedPrice));
         }
         if (dayOfTheWeekDiscount.applyDayOfTheWeekDiscount(date, order) > 0) {
             checkDayOfTheWeekEvent(appliedEvents, date, order);
         }
         if (holidayDiscount.applyHolidayDiscount(date) > 0) {
-            appliedEvents.put("특별 할인", 1000);
+            appliedEvents.put("특별 할인", holidayDiscount.applyHolidayDiscount(date));
         }
     }
 
