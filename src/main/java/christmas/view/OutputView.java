@@ -6,6 +6,12 @@ import java.util.Map;
 
 public class OutputView {
 
+    private static final int GIFT_EVENT_THRESHOLD = 120000;
+    private static final int GIFT_DISCOUNT_AMOUNT = 25000;
+    private static final int SANTA_BADGE_THRESHOLD = 20000;
+    private static final int TREE_BADGE_THRESHOLD = 10000;
+    private static final int STAR_BADGE_THRESHOLD = 5000;
+
     OutputTool outputTool = new OutputTool();
 
     public void printAll(
@@ -82,9 +88,9 @@ public class OutputView {
 
     private void printFinalPrice(Integer addedPrice, Integer benefit) {
         System.out.println("<할인 후 예상 결제 금액>");
-        if (addedPrice >= 120000) {
-            System.out.println(outputTool.formatPrice(addedPrice - benefit + 25000));
-        } else if (addedPrice < 120000) {
+        if (addedPrice >= GIFT_EVENT_THRESHOLD) {
+            System.out.println(outputTool.formatPrice(addedPrice - benefit + GIFT_DISCOUNT_AMOUNT));
+        } else if (addedPrice < GIFT_EVENT_THRESHOLD) {
             System.out.println(outputTool.formatPrice(addedPrice - benefit));
         }
         System.out.println();
@@ -92,11 +98,11 @@ public class OutputView {
 
     private void printBadge(Integer benefit) {
         System.out.println("<12월 이벤트 배지>");
-        if (benefit >= 20000) {
+        if (benefit >= SANTA_BADGE_THRESHOLD) {
             System.out.println("산타");
-        } else if (benefit >= 10000) {
+        } else if (benefit >= TREE_BADGE_THRESHOLD) {
             System.out.println("트리");
-        } else if (benefit >= 5000) {
+        } else if (benefit >= STAR_BADGE_THRESHOLD) {
             System.out.println("별");
         } else if (benefit >= 0) {
             System.out.println("없음");
