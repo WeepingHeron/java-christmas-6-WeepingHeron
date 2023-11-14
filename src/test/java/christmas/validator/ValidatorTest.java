@@ -47,9 +47,12 @@ class ValidatorTest {
     @Test
     void checkMenuNameTest() {
         // Given
+        Assertions.assertDoesNotThrow(() -> validator.isValidOrder(order));
+
+        // When
         order.put("존재하지 않는 메뉴", 1);
 
-        // When & Then
+        // Then
         Assertions.assertThrows(IllegalArgumentException.class, () -> validator.isValidOrder(order));
     }
 
@@ -57,9 +60,12 @@ class ValidatorTest {
     @Test
     void checkMenuQuantityTest() {
         // Given
+        Assertions.assertDoesNotThrow(() -> validator.isValidOrder(order));
+
+        // When
         order.put("레드와인", 0);
 
-        // When & Then
+        // Then
         Assertions.assertThrows(IllegalArgumentException.class, () -> validator.isValidOrder(order));
     }
 
@@ -67,25 +73,36 @@ class ValidatorTest {
     @Test
     void checkTotalQuantityTest() {
         // Given
+        Assertions.assertDoesNotThrow(() -> validator.isValidOrder(order));
+        Map<String, Integer> validOrder = new HashMap<>();
+        Map<String, Integer> inValidOrder = new HashMap<>();
         Map<String, Integer> emptyOrder = new HashMap<>();
-        order.put("레드와인", 16);
 
-        // When & Then
-        Assertions.assertThrows(IllegalArgumentException.class, () -> validator.isValidOrder(emptyOrder));
+        // When
+        order.put("레드와인", 16);
+        validOrder.put("해산물파스타", 20);
+        inValidOrder.put("해산물파스타", 21);
+
+        // Then
         Assertions.assertThrows(IllegalArgumentException.class, () -> validator.isValidOrder(order));
+        Assertions.assertDoesNotThrow(() -> validator.isValidOrder(validOrder));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> validator.isValidOrder(inValidOrder));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> validator.isValidOrder(emptyOrder));
     }
 
     @DisplayName("음료만 주문할 경우 주문이 불가하도록 한다.")
     @Test
     void isNotOnlyBeverageTest() {
         // Given
+        Assertions.assertDoesNotThrow(() -> validator.isValidOrder(order));
         Map<String, Integer> onlyBeverage = new HashMap<>();
+
+        // When
         onlyBeverage.put("제로콜라", 1);
         onlyBeverage.put("레드와인", 2);
 
-        // When & Then
+        // Then
         Assertions.assertThrows(IllegalArgumentException.class, () -> validator.isValidOrder(onlyBeverage));
-        Assertions.assertDoesNotThrow(() -> validator.isValidOrder(order));
     }
 
     @DisplayName("Map에 새로운 데이터를 추가할 때 겹치는 key가 있는지 확인한다.")
