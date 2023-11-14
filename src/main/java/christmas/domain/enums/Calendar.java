@@ -44,11 +44,20 @@ public enum Calendar {
         this.holiday = holiday;
     }
 
-    public boolean isWeekend() {
-        return weekend;
+    public static boolean isWeekend(int date) {
+        return findByDate(date).weekend;
     }
 
-    public boolean isHoliday() {
-        return holiday;
+    public static boolean isHoliday(int date) {
+        return findByDate(date).holiday;
+    }
+
+    private static Calendar findByDate(int date) {
+        for (Calendar day : values()) {
+            if (day.date == date) {
+                return day;
+            }
+        }
+        throw new IllegalArgumentException("[ERROR] 유효하지 않은 날짜입니다.");
     }
 }
