@@ -23,7 +23,7 @@ public class Calculator {
     HolidayDiscount holidayDiscount = new HolidayDiscount();
 
     public Integer calculateAddedPrice(Map<String, Integer> order) {
-        Integer addedPrice = INITIAL_ADDED_PRICE;
+        int addedPrice = INITIAL_ADDED_PRICE;
 
         for (Map.Entry<String, Integer> entry : order.entrySet()) {
             String menuName = entry.getKey();
@@ -36,7 +36,7 @@ public class Calculator {
     }
 
     public Integer calculateBenefit(Integer date, Integer addedPrice, Map<String, Integer> order) {
-        Integer benefit = INITIAL_BENEFIT;
+        int benefit = INITIAL_BENEFIT;
 
         if (addedPrice >= EVENT_THRESHOLD) {
             benefit
