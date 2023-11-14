@@ -1,6 +1,5 @@
-package christmas.domain.menu;
+package christmas.domain.enums;
 
-import christmas.domain.enums.MenuList;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -47,7 +46,7 @@ class MenuListTest {
 
     @DisplayName("인자로 들어온 메뉴와 그룹이 맞는지 확인한다.")
     @Test
-    void isValidNameAndGroupTest() {
+    void isExistentNameAndGroupTest() {
         // Given
         String menuName = "양송이수프";
         String appetizerGroup = "애피타이저";
@@ -64,7 +63,7 @@ class MenuListTest {
 
     @DisplayName("인자로 들어온 메뉴가 존재하는지 확인한다.")
     @Test
-    void isValidNameTest() {
+    void isExistentNameTest() {
         // Given
         String validMenu = "양송이수프";
         String invalidMenu1 = "양송이 수프";
