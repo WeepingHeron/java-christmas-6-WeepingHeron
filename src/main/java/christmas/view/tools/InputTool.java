@@ -20,7 +20,7 @@ public class InputTool {
         return parsedOrder;
     }
 
-    private Map<String, Integer> putData(Map<String, Integer> parsedOrder, String[] menuAndQuantity) {
+    private void putData(Map<String, Integer> parsedOrder, String[] menuAndQuantity) {
         if (menuAndQuantity.length == MENU_AND_QUANTITY_MATCHED) {
             try {
                 String menu = menuAndQuantity[INDEX_OF_MENU];
@@ -31,7 +31,6 @@ public class InputTool {
                 throw new IllegalArgumentException("[ERROR] 유효하지 않은 수량입니다. 다시 입력해 주세요.");
             }
         }
-        return parsedOrder;
     }
 
     private void checkOrderWhileParsing(Map<String, Integer> order, String menu) {
