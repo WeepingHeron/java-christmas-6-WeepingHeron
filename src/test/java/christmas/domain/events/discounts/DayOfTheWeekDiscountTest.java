@@ -10,7 +10,7 @@ import java.util.Map;
 
 class DayOfTheWeekDiscountTest {
 
-    private Map<String, Integer> order = new LinkedHashMap<>();
+    private final Map<String, Integer> order = new LinkedHashMap<>();
     DayOfTheWeekDiscount dayOfTheWeekDiscount = new DayOfTheWeekDiscount();
 
     @BeforeEach
