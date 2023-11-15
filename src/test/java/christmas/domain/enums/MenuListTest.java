@@ -14,6 +14,7 @@ class MenuListTest {
         String mainMenu = "바비큐립";
         String desertMenu = "아이스크림";
         String beverageMenu = "샴페인";
+        String invalidMenu = "햄버거";
 
         // When
         String appetizerGroup = MenuList.getGroupByName(appetizerMenu);
@@ -26,6 +27,7 @@ class MenuListTest {
         Assertions.assertEquals("메인", mainGroup);
         Assertions.assertEquals("디저트", desertGroup);
         Assertions.assertEquals("음료", beverageGroup);
+        Assertions.assertThrows(IllegalArgumentException.class, () -> MenuList.getGroupByName(invalidMenu));
     }
 
     @DisplayName("인자로 들어온 메뉴의 가격을 리턴한다.")
