@@ -15,11 +15,11 @@ class HolidayDiscountTest {
         Integer holiday = 3;
 
         // When
-        Integer result1 = holidayDiscount.applyHolidayDiscount(notHoliday);
-        Integer result2 = holidayDiscount.applyHolidayDiscount(holiday);
+        Integer noHolidayDiscount = holidayDiscount.applyHolidayDiscount(notHoliday);
+        Integer gotHolidayDiscount = holidayDiscount.applyHolidayDiscount(holiday);
 
         // Then
-        Assertions.assertEquals(0, result1);
-        Assertions.assertEquals(1000, result2);
+        Assertions.assertEquals(0, noHolidayDiscount);
+        Assertions.assertEquals(1000, gotHolidayDiscount);
     }
 }

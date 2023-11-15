@@ -10,10 +10,10 @@ class OutputToolTest {
     @Test
     void getFormattedPrice() {
         // Given
+        OutputTool outputTool = new OutputTool();
         Integer price = 142000;
 
         // When
-        OutputTool outputTool = new OutputTool();
         String formattedPrice = outputTool.formatPrice(price);
 
         // Then

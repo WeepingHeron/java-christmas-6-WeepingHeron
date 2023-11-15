@@ -16,13 +16,13 @@ class ChristmasDiscountTest {
         ChristmasDiscount christmasDiscount = new ChristmasDiscount();
 
         // When
-        Integer result1 = christmasDiscount.applyChristmasDiscount(minDiscountDate);
-        Integer result2 = christmasDiscount.applyChristmasDiscount(maxDiscountDate);
-        Integer result3 = christmasDiscount.applyChristmasDiscount(noDiscountDate);
+        Integer minDiscount = christmasDiscount.applyChristmasDiscount(minDiscountDate);
+        Integer maxDiscount = christmasDiscount.applyChristmasDiscount(maxDiscountDate);
+        Integer noDiscount = christmasDiscount.applyChristmasDiscount(noDiscountDate);
 
         // Then
-        Assertions.assertEquals(1000, result1);
-        Assertions.assertEquals(3400, result2);
-        Assertions.assertEquals(0, result3);
+        Assertions.assertEquals(1000, minDiscount);
+        Assertions.assertEquals(3400, maxDiscount);
+        Assertions.assertEquals(0, noDiscount);
     }
 }
