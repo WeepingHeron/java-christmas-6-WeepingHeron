@@ -48,7 +48,7 @@ public enum MenuList {
                 return menuList.Price;
             }
         }
-        return null;
+        throw new IllegalArgumentException("[ERROR] 존재하지 않는 메뉴입니다.");
     }
 
     public static boolean isExistentMatchOfNameAndGroup(String name, String group) {

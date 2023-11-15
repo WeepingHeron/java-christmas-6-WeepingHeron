@@ -37,11 +37,10 @@ class MenuListTest {
 
         // When
         Integer validResult = MenuList.getPriceByName(validName);
-        Integer invalidResult = MenuList.getPriceByName(invalidName);
 
         // Then
         Assertions.assertEquals(6000, validResult);
-        Assertions.assertNull(invalidResult);
+        Assertions.assertThrows(IllegalArgumentException.class, () -> MenuList.getPriceByName(invalidName));
     }
 
     @DisplayName("인자로 들어온 메뉴와 그룹이 맞는지 확인한다.")
