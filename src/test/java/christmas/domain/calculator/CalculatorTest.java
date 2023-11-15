@@ -31,7 +31,6 @@ class CalculatorTest {
         // Given
 
         // When
-        Calculator calculator = new Calculator();
         Integer result = calculator.calculateAddedPrice(order);
 
         // Then
