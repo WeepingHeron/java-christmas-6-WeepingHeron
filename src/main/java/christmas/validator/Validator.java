@@ -3,7 +3,6 @@ package christmas.validator;
 import christmas.domain.enums.MenuList;
 
 import java.util.Map;
-import java.util.Objects;
 
 public class Validator {
 
@@ -68,7 +67,7 @@ public class Validator {
     private boolean isNotOnlyBeverage(Map<String, Integer> order) {
         for (Map.Entry<String, Integer> entry : order.entrySet()) {
             String menu = entry.getKey();
-            if (!Objects.equals(MenuList.getGroupByName(menu), "음료")) {
+            if (!MenuList.getGroupByName(menu).equals("음료")) {
                 return true;
             }
         }
