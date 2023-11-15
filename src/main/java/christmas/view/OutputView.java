@@ -58,7 +58,8 @@ public class OutputView {
 
         if (appliedEvents.containsKey("증정 이벤트")) {
             System.out.println("샴페인 1개");
-        } else if (!appliedEvents.containsKey("증정 이벤트")) {
+        }
+        if (!appliedEvents.containsKey("증정 이벤트")) {
             System.out.println("없음");
         }
         System.out.println();
@@ -90,7 +91,8 @@ public class OutputView {
         System.out.println("<할인 후 예상 결제 금액>");
         if (addedPrice >= GIFT_EVENT_THRESHOLD) {
             System.out.println(outputTool.formatPrice(addedPrice - benefit + GIFT_DISCOUNT_AMOUNT));
-        } else if (addedPrice < GIFT_EVENT_THRESHOLD) {
+        }
+        if (addedPrice < GIFT_EVENT_THRESHOLD) {
             System.out.println(outputTool.formatPrice(addedPrice - benefit));
         }
         System.out.println();
