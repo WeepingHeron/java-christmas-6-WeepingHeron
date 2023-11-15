@@ -10,15 +10,15 @@ class ChristmasDiscountTest {
     @Test
     void applyChristmasDiscountTest() {
         // Given
-        Integer date1 = 1;
-        Integer date2 = 25;
-        Integer date3 = 26;
+        Integer minDiscountDate = 1;
+        Integer maxDiscountDate = 25;
+        Integer noDiscountDate = 26;
         ChristmasDiscount christmasDiscount = new ChristmasDiscount();
 
         // When
-        Integer result1 = christmasDiscount.applyChristmasDiscount(date1);
-        Integer result2 = christmasDiscount.applyChristmasDiscount(date2);
-        Integer result3 = christmasDiscount.applyChristmasDiscount(date3);
+        Integer result1 = christmasDiscount.applyChristmasDiscount(minDiscountDate);
+        Integer result2 = christmasDiscount.applyChristmasDiscount(maxDiscountDate);
+        Integer result3 = christmasDiscount.applyChristmasDiscount(noDiscountDate);
 
         // Then
         Assertions.assertEquals(1000, result1);
