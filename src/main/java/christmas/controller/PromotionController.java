@@ -1,12 +1,9 @@
 package christmas.controller;
 
 import christmas.domain.PromotionModel;
-import christmas.domain.calculator.Calculator;
 import christmas.validator.Validator;
 import christmas.view.InputView;
 import christmas.view.OutputView;
-
-import java.util.Map;
 
 public class PromotionController {
 
@@ -55,11 +52,12 @@ public class PromotionController {
     }
 
     private void runOutputView() {
-        Calculator calculator = new Calculator();
-        Integer addedPrice = calculator.calculateAddedPrice(model.getOrder());
-        Integer benefit = calculator.calculateBenefit(model.getDate(), addedPrice, model.getOrder());
-        Map<String, Integer> appliedEvents = calculator.calculateAppliedEvents(model.getDate(), addedPrice, model.getOrder());
-
-        outputView.printAll(model.getDate(), model.getOrder(), addedPrice, appliedEvents, benefit);
+        outputView.printAll(
+                model.getDate(),
+                model.getOrder(),
+                model.takeAddedPrice(),
+                model.takeAppliedEvents(),
+                model.takeBenefit()
+        );
     }
 }
