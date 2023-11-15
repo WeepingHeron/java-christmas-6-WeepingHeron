@@ -20,6 +20,7 @@
 * 총혜택 금액에 따른 이벤트 배지를 출력한다
 
 ## 클래스 목록
+
 ## domain: 핵심 기능
 * PromotionModel: 날짜와 주문 데이터 관리
   * getDate: 방문 날짜 반환
@@ -59,7 +60,6 @@
   * calculateDayOfTheWeekDiscount: 인자로 들어온 메뉴의 그룹을 MenuList와 대조하여 할인 금액을 계산
 * HolidayDiscount: 공휴일에는 총주문 금액에서 1000원 할인
   * applyHolidayDiscount: 날짜와 달력을 비교하여 할인 금액을 반환
-
 
 ## view: UI 담당
 * InputView: 입력 UI를 담당
@@ -101,7 +101,7 @@
   * isNotOnlyBeverage: 음료만 주문한 것은 아닌지 확인한다
 
 ## 요구 사항
-### 사전 기능 정리
+### 기능 요구 사항
 * 방문 날짜에 따른 이벤트가 적용되었는가
 * 메뉴와 정가가 맞게 책정되었는가
 * 주문 메뉴에 따라 할인 전 총주문 금액을 계산하였는가
