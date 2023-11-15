@@ -27,6 +27,9 @@
   * setDate: 방문 날짜 설정
   * getOrder: 주문 반환
   * setOrder: 주문 설정
+  * takeAddedPrice: 총주문 금액 계산 후 반환
+  * takeBenefit: 총혜택 금액 계산 후 반환
+  * takeAppliedEvents: 혜택 내역 계산 후 반환
 ### enum
 * Calendar: 12월 달력의 날짜에 담긴 주말, 공휴일의 정보 및 관련 메서드를 enum 형태로 관리
   * isWeekend: 주말 여부를 boolean 형태로 반환
