@@ -10,9 +10,9 @@ class HolidayDiscountTest {
     @Test
     void applyHolidayDiscountTest() {
         // Given
+        HolidayDiscount holidayDiscount = new HolidayDiscount();
         Integer notHoliday = 2;
         Integer holiday = 3;
-        HolidayDiscount holidayDiscount = new HolidayDiscount();
 
         // When
         Integer result1 = holidayDiscount.applyHolidayDiscount(notHoliday);
